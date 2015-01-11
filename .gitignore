@@ -1,2 +1,6 @@
 /vendor
 .env
+bower_components
+.vagrant
+.idea
+node_modules

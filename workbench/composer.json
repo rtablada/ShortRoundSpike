@@ -1,0 +1,14 @@
+{
+    "name": "rtablada/short-round",
+    "description": "A set of tools to make awesome custom CMSes!",
+    "require": {
+        "lookitsatravis/listify": "~1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Tablada",
+            "email": "ryan.tablada@gmail.com"
+        }
+    ]
+}

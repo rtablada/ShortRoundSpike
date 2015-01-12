@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG'),
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -145,6 +145,8 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        'Rtablada\ShortRound\Gadget\GadgetServiceProvider',
+
 	],
 
 	/*
@@ -190,6 +192,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+        'Gadget' => 'Rtablada\ShortRound\Gadget\Facades\Gadget',
 
 	],
 

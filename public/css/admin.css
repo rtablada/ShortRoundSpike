@@ -7036,3 +7036,12 @@ table.dataTable thead .sorting:after {
 .index-actions {
   margin-bottom: 10px;
 }
+.editable.medium-editor-placeholder:after {
+  color: #999999;
+  top: 6px;
+  left: 12px;
+}
+.editable {
+  min-height: 272px;
+  height: initial;
+}

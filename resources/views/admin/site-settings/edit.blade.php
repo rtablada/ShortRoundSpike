@@ -34,4 +34,4 @@
     </div>
 @endsection
 
-@include('admin.partials.data-table')
+@include('admin._partials.data-table')

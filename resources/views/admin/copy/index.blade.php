@@ -8,7 +8,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12 index-actions">
-                            <a class="btn btn-primary pull-right" href="{{ route('admin.users.create') }}">Create User <i class="fa fa-plus fa-lg"></i></a>
+                            <a class="btn btn-primary pull-right" href="{{ route('admin.copy.create') }}">Create Copy <i class="fa fa-plus fa-lg"></i></a>
                         </div>
                     </div>
 
@@ -16,16 +16,16 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th>Short</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($copyCollection as $copy)
                             <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td><a href="{{ URL::route('admin.users.edit', $user) }}"><i class="fa fa-edit fa-lg"></i></a></td>
+                                <td>{{ $copy->name }}</td>
+                                <td><?= $copy->short ?></td>
+                                <td><a href="{{ URL::route('admin.copy.edit', $copy->slug) }}"><i class="fa fa-edit fa-lg"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

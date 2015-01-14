@@ -57,5 +57,8 @@ elixir(function(mix) {
         .publish('metisMenu/dist/metisMenu.js', 'public/js/metis.js')
         .publish('font-awesome/fonts', 'public/fonts')
         .publish('sb-admin-2/fonts', 'public/fonts')
-        .publish('datatables-bootstrap3/BS3/assets/images', 'public/images');
+        .publish('datatables-bootstrap3/BS3/assets/images', 'public/images')
+        .publish('medium-editor/dist/js/medium-editor.min.js', 'public/js/medium-editor.js')
+        .publish('medium-editor/dist/css/medium-editor.min.css', 'public/css/medium-editor.css')
+        .publish('medium-editor/dist/css/themes/bootstrap.min.css', 'public/css/medium-bootstrap.css');
 });

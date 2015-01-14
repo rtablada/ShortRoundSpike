@@ -15,6 +15,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
     Route::get('users/{id}', ['uses' => 'Admin\\UsersController@edit', 'as' => 'admin.users.edit']);
     Route::put('users/{id}', ['uses' => 'Admin\\UsersController@update', 'as' => 'admin.users.update']);
 
+    Route::group(['prefix' => 'copy'], function () {
+        Route::get('/', ['uses' => 'Admin\\CopyController@index', 'as' => 'admin.copy.index']);
+        Route::get('/new', ['uses' => 'Admin\\CopyController@create', 'as' => 'admin.copy.create']);
+        Route::post('/', ['uses' => 'Admin\\CopyController@store', 'as' => 'admin.copy.store']);
+        Route::get('/profile', ['uses' => 'Admin\\CopyController@profile', 'as' => 'admin.copy.profile']);
+        Route::get('/{id}', ['uses' => 'Admin\\CopyController@edit', 'as' => 'admin.copy.edit']);
+        Route::put('/{id}', ['uses' => 'Admin\\CopyController@update', 'as' => 'admin.copy.update']);
+    });
 });
 
 Route::get('login', ['uses' => 'Auth\\SessionController@create', 'as' => 'auth.session.create']);

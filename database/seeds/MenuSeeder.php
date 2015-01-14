@@ -10,7 +10,7 @@ class MenuSeeder extends EloquentSeeder
     protected $seeds = [
         [
             'name'     => 'Admin',
-            'base_url' => '/admin',
+            'url' => '/admin',
             'children' => [
                 [
                     'name' => 'Users',
@@ -32,7 +32,7 @@ class MenuSeeder extends EloquentSeeder
         ],
         [
             'name'     => 'Admin Top',
-            'base_url' => '/admin',
+            'url' => '/admin',
             'children' => [
                 [
                     'name' => 'Settings',
@@ -51,7 +51,7 @@ class MenuSeeder extends EloquentSeeder
                         ],
                         [
                             'name' => 'Profile',
-                            'url'  => 'users/profile',
+                            'url'  => 'profile',
                             'class' => 'fa fa-user fa-fw'
                         ],
                     ]

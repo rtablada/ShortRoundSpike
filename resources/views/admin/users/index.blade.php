@@ -2,10 +2,16 @@
 
 @section('page')
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ $title }}</div>
                 <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 index-actions">
+                            <a class="btn btn-primary pull-right" href="{{ route('admin.users.create') }}">Create User <i class="fa fa-plus fa-lg"></i></a>
+                        </div>
+                    </div>
+
                     <table id="data-table" class="table table-striped table-bordered table-hover data-table">
                         <thead>
                             <tr>

@@ -26,6 +26,10 @@ class UsersController extends AdminController
         'email' => 'required|email',
     ];
 
+    protected $storeRules = [
+        'email' => 'required|email|unique:users',
+    ];
+
     /**
      * @var \Illuminate\Contracts\Auth\Guard
      */
@@ -45,40 +49,69 @@ class UsersController extends AdminController
         return $this->render('index', compact('users'));
     }
 
+    public function create()
+    {
+        $user = $this->user->newInstance();
+
+        return $this->userForm('create', $user, 'New User');
+    }
+
+    public function store()
+    {
+        $this->validate($this->request, $this->storeRules);
+
+        $this->user->createWithRandomPassword($this->request->only('email', 'name'));
+
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User updated successfully.');
+    }
+
     public function edit($id)
     {
         $user = $this->user->find($id);
 
-        return $this->userForm($user);
+        return $this->userForm('edit', $user);
     }
 
     public function profile()
     {
-        return $this->userForm($this->guard->user());
+        return $this->userForm('edit', $this->guard->user());
     }
 
-    public function userForm($user, $title = null)
+    public function userForm($action, $user, $title = null)
     {
         $title = $title ?: 'Editing User - ' . $user->name;
 
-        return $this->render('edit', compact('user'), $title);
+        switch ($action) {
+            case 'create':
+                $method = null;
+                $route = route('admin.users.store');
+                break;
+            case 'edit':
+                $method = 'put';
+                $route = route('admin.users.update', $user);
+        }
+
+        return $this->render('form', compact('user', 'method', 'route'), $title);
     }
 
     public function update($id)
     {
         $this->validate($this->request);
 
-        $this->user->update($id, $this->request->only('email', 'name'));
+        $response = $this->user->update($id, $this->request->only('email', 'name'));
 
-        return redirect()->route('admin.users.index')
-            ->with('success', 'User updated successfully.');
+        if ($response) {
+            return redirect()->route('admin.users.index')
+                ->with('success', 'User updated successfully.');
+        }
     }
 
     /**
      * Validate the given request with the given rules.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  array  $rules
+     * @param  \Illuminate\Http\Request $request
+     * @param  array $rules
      * @return void
      */
     public function validate(Request $request, array $rules = null)
@@ -87,8 +120,7 @@ class UsersController extends AdminController
 
         $validator = $this->getValidationFactory()->make($request->all(), $rules);
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             $this->throwValidationException($request, $validator);
         }
     }
@@ -96,14 +128,13 @@ class UsersController extends AdminController
     /**
      * Create the response for when a request fails validation.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  array  $errors
+     * @param  \Illuminate\Http\Request $request
+     * @param  array $errors
      * @return \Illuminate\Http\Response
      */
     protected function buildFailedValidationResponse(Request $request, array $errors)
     {
-        if ($request->ajax())
-        {
+        if ($request->ajax()) {
             return new JsonResponse($errors, 422);
         }
 

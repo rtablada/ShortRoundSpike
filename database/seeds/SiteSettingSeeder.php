@@ -32,6 +32,10 @@ class SiteSettingSeeder extends EloquentSeeder
             'name' => 'Address Zip',
             'value' => '37201',
         ],
+        [
+            'name' => 'Facebook URL',
+            'value' => 'foo',
+        ]
     ];
 
 }

@@ -117,8 +117,9 @@ class Menu extends Model
 
     public function getFullUrlAttribute()
     {
-        if ($this->parent && $this->parent->base_url && substr($this->url, 0, 1) !== '/') {
-            return $this->parent->base_url . '/' . $this->url;
+        if ($this->parent && substr($this->url, 0, 1) !== '/') {
+            \Log::info($this->parent);
+            return $this->parent->getFullUrlAttribute() . '/' . $this->url;
         } else {
             return  $this->url;
         }

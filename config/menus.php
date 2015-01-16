@@ -18,7 +18,7 @@ return [
                 'url'  => 'copy',
             ],
             [
-                'name' => 'Settings',
+                'name' => 'Setting',
                 'url'  => 'site-settings',
             ],
         ],

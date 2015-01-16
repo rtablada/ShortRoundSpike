@@ -24,9 +24,17 @@ class MenusServiceProvider extends ServiceProvider
         $this->app->bind('menu-array', function($app) use ($menusArray) {
             return new ArrayMenuGateway($menusArray);
         });
-
         $this->app->bind('App\\Gateways\\ArrayMenuGateway', 'menu-array');
+        
+        switch ($menuDriver) {
+            case 'db':
+                $this->app->bind('App\\Gateways\\MenuGatewayInterface', 'App\\Gateways\\DbMenuGateway');
+                break;
+            default:
+                $this->app->bind('App\\Gateways\\MenuGatewayInterface', 'App\\Gateways\\ArrayMenuGateway');
+                break;
+        }
 
-        $this->app->bind('App\\Gateways\\MenuGatewayInterface', 'App\\Gateways\\ArrayMenuGateway');
+
     }
 }

@@ -2,6 +2,6 @@
 
 return [
     'menus' => [
-        'driver' => 'file',
+        'driver' => 'db',
     ],
 ];

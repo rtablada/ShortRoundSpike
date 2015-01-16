@@ -125,6 +125,16 @@ class Menu extends Model
         }
     }
 
+    public function getRolesAttribute()
+    {
+        return explode(',', $this->attributes['roles']);
+    }
+
+    public function setRolesAttribute($value)
+    {
+        $this->attributes['roles'] = implode(',', $value);
+    }
+
     public function isActive()
     {
         return '/' . Request::path() === $this->getFullUrlAttribute();

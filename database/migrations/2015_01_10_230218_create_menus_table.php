@@ -22,6 +22,7 @@ class CreateMenusTable extends Migration {
             $table->integer('parent_id')->nullable();
             $table->string('base_url')->nullable();
             $table->string('class')->nullable();
+            $table->string('roles')->nullable();
             $table->string('regex')->nullable();
             $table->string('target')->default('_self');
             $table->boolean('active')->default(1);

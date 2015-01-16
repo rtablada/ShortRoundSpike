@@ -56,9 +56,11 @@ class DbUserGateway
 
         $user = $this->user->create($attributes);
 
-        return $this->emailPasswordReset($user->email, function($message) {
+        $this->emailPasswordReset($user->email, function($message) {
             $message->newUser = true;
         });
+
+        return $user;
     }
 
     public function emailPasswordReset($email, $callback = null)
@@ -91,6 +93,18 @@ class DbUserGateway
 
             default:
                 return $response;
+        }
+    }
+
+    public function ensureRoles(User $user, array $roles)
+    {
+        foreach($roles as $role => $value)
+        {
+            if ($value) {
+                $user->ensureRole($role);
+            } else {
+                $user->detachRole($role);
+            }
         }
     }
 

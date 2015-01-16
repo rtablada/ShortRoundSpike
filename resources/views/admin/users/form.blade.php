@@ -40,12 +40,14 @@
                                 <legend class="col-md-8 col-md-offset-2">Roles</legend>
                             </div>
                             @foreach($roles as $role)
+                            <div class="row">
                                 <div class="checkbox">
                                     <label for="roles-{{ $role->name }}" class="control-label col-md-2 text-right">{{ ucwords($role->name) }}:</label>
                                     <div class="col-md-8">
-                                        <input type="checkbox" id="roles-{{ $role->name }}" name="roles[{{ $role->name }}]" value="1">
+                                        <input type="checkbox" id="roles-{{ $role->name }}" name="roles[{{ $role->name }}]" value="1" <?= $user->hasRole($role->name) ? 'checked' : null ?>>
                                     </div>
                                 </div>
+                            </div>
                             @endforeach
                             </fieldset>
 

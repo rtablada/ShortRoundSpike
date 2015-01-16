@@ -66,7 +66,8 @@ class UsersController extends AdminController
     {
         $this->validate($this->request, $this->storeRules);
 
-        $this->user->createWithRandomPassword($this->request->only('email', 'name'));
+        $user = $this->user->createWithRandomPassword($this->request->only('email', 'name'));
+        $this->user->ensureRoles($user, $this->getRoles($this->request));
 
         return redirect()->route('admin.users.index')
             ->with('success', 'User updated successfully.');
@@ -106,9 +107,11 @@ class UsersController extends AdminController
     {
         $this->validate($this->request);
 
-        $response = $this->user->update($id, $this->request->only('email', 'name'));
+        $user = $this->user->update($id, $this->request->only('email', 'name'));
 
-        if ($response) {
+        if ($user) {
+            $this->user->ensureRoles($user, $this->getRoles($this->request));
+
             return redirect()->route('admin.users.index')
                 ->with('success', 'User updated successfully.');
         }
@@ -149,5 +152,23 @@ class UsersController extends AdminController
             ->withInput($request->input())
             ->with('danger', 'The information you entered was not valid.')
             ->withErrors($errors);
+    }
+
+    protected function getRoles(Request $request)
+    {
+        $allRoles = $this->role->all();
+        $inputRoles = $request->get('roles');
+
+        foreach($allRoles as $role) {
+            $roleName = $role->name;
+
+            if (!isset($inputRoles[$roleName])) {
+                $inputRoles[$roleName] = 0;
+            }
+        }
+
+        $inputRoles = array_map(function($role) { return(bool) $role; }, $inputRoles);
+
+        return $inputRoles;
     }
 }

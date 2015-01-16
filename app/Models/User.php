@@ -44,11 +44,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function hasRole($key)
     {
-        $cache = app('cache');
-        $id = $this->getAttribute('id');
-        $cacheKey = "hasRole.{$id}.{$key}";
-
-        if ($cacheResult = $cache->get($cacheKey)) {
+        if ($cacheResult = $this->getRoleCache($key)) {
             return $cacheResult;
         }
 
@@ -56,9 +52,78 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                 ->where('name', '=', $key)
                 ->count();
 
-        $cache->put($cacheKey, $roleMatch, 60);
+        $this->putRoleCache($key, $roleMatch);
 
         return $roleMatch !== 0;
+    }
+
+    public function ensureRole($key)
+    {
+        if (!$this->hasRole($key)) {
+            $role = $this->findRole($key);
+
+            $this->roles()->attach($role);
+            $this->forgetRoleCache($key);
+        }
+    }
+
+    public function detachRole($key)
+    {
+        $role = $this->findRole($key);
+
+        $this->roles()->detach($role->id);
+        $this->forgetRoleCache($key);
+    }
+
+    public function getRoleModel()
+    {
+        return $this->roles()->getRelated();
+    }
+
+    /**
+     * @param $key
+     * @return static
+     */
+    protected function findRole($key)
+    {
+        $role = $this->getRoleModel()->firstOrCreate(['name' => $key]);
+        return $role;
+    }
+
+    protected function getRoleCache($roleName)
+    {
+        $cache = $this->getCacheInstance();
+
+        return $cache->get($this->getCacheKey($roleName));
+    }
+
+    protected function putRoleCache($roleName, $roleMatch)
+    {
+        $cache = $this->getCacheInstance();
+
+        $cache->put($this->getCacheKey($roleName), $roleMatch, 60);
+    }
+
+    protected function forgetRoleCache($roleName)
+    {
+        $cache = $this->getCacheInstance();
+
+        $cache->forget($this->getCacheKey($roleName));
+    }
+
+    protected function getCacheKey($key)
+    {
+        return "hasRole.{$this->getAttribute('id')}.{$key}";
+    }
+
+
+    /**
+     *
+     * @return \Illuminate\Cache\Repository
+     */
+    protected function getCacheInstance()
+    {
+        return app('cache');
     }
 
 }

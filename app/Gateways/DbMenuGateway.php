@@ -2,7 +2,7 @@
 
 use App\Models\Menu;
 
-class DbMenuGateway
+class DbMenuGateway implements MenuGatewayInterface
 {
     /**
      * @var \App\Models\Menu

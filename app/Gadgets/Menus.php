@@ -1,6 +1,7 @@
 <?php  namespace App\Gadgets;
 
 use App\Gateways\DbMenuGateway;
+use App\Gateways\MenuGatewayInterface;
 
 class Menus
 {
@@ -11,7 +12,7 @@ class Menus
 
     protected $template = 'gadgets.menus';
 
-    public function __construct(DbMenuGateway $menu, \Illuminate\Contracts\View\Factory $view)
+    public function __construct(MenuGatewayInterface $menu, \Illuminate\Contracts\View\Factory $view)
     {
         $this->menu = $menu;
         $this->view = $view;

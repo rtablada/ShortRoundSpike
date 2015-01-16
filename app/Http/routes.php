@@ -33,3 +33,5 @@ Route::get('password-reset', ['uses' => 'Auth\\PasswordController@create', 'as' 
 Route::post('password-reset', ['uses' => 'Auth\\PasswordController@store', 'as' => 'auth.password.store']);
 Route::get('password-reset/{id}', ['uses' => 'Auth\\PasswordController@edit', 'as' => 'auth.password.edit']);
 Route::post('password-reset/{id}', ['uses' => 'Auth\\PasswordController@update', 'as' => 'auth.password.update']);
+
+Route::get('{page?}', ['uses' => 'PagesController@find', 'as' => 'auth.pages.find'])->where('all', '.*');

@@ -11,7 +11,7 @@
     @else
         <li>
             <a class="<?= $menu->isActive() ? 'active' : null ?>" href="<?= $menu->full_url ?>">
-                <i class="<?= $menu-> class ?>"></i> <?= $menu->name ?>
+                <i class="<?= $menu->class ?>"></i> <?= $menu->name ?>
             </a>
         </li>
     @endif

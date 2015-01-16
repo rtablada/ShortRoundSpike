@@ -33,6 +33,22 @@
                                 </div>
                             </div>
 
+
+'                           <fieldset class="form-group row">
+
+                            <div class="row">
+                                <legend class="col-md-8 col-md-offset-2">Roles</legend>
+                            </div>
+                            @foreach($roles as $role)
+                                <div class="checkbox">
+                                    <label for="roles-{{ $role->name }}" class="control-label col-md-2 text-right">{{ ucwords($role->name) }}:</label>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" id="roles-{{ $role->name }}" name="roles[{{ $role->name }}]" value="1">
+                                    </div>
+                                </div>
+                            @endforeach
+                            </fieldset>
+
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="actions pull-right">

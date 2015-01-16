@@ -13,6 +13,6 @@ class DbRoleGateway
 
     public function all()
     {
-        $this->role->newQuery()->get();
+        return $this->role->newQuery()->get();
     }
 }

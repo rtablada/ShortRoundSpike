@@ -57,6 +57,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $roleMatch !== 0;
     }
 
+    public function inRoles(array $keys)
+    {
+        foreach ($keys as $key) {
+            if ($this->hasRole($key)) {
+                return true;
+            }
+        }
+    }
+
     public function ensureRole($key)
     {
         if (!$this->hasRole($key)) {

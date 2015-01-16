@@ -14,6 +14,7 @@ class ArrayMenuItem
     public $class;
     public $regex;
     public $target;
+    public $roles = [];
     public $children = [];
 
     protected $fillable = [
@@ -24,6 +25,7 @@ class ArrayMenuItem
         'class',
         'regex',
         'target',
+        'roles',
     ];
 
     public function __construct(array $attributes)

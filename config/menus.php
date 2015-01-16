@@ -8,6 +8,9 @@ return [
             [
                 'name' => 'Users',
                 'url'  => 'users',
+                'roles' => [
+                    'admin'
+                ]
             ],
             [
                 'name' => 'Copy',

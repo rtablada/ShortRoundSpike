@@ -1,7 +1,6 @@
 <?php  namespace App\Gadgets;
 
 use App\Gateways\DbCopyGateway;
-use Illuminate\Contracts\View\Factory;
 
 class Copy
 {

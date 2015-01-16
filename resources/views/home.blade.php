@@ -1,1 +1,2 @@
-@gadget('App\\Gadgets\\Copy', 'home-headline')
+@gadget('Copy', 'home-headline')
+@gadget('Setting', 'from-email')

@@ -1,5 +1,6 @@
 <?php  namespace App\Http\Controllers\Admin;
 
+use App\Gateways\DbRoleGateway;
 use App\Gateways\DbUserGateway;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -34,12 +35,17 @@ class UsersController extends AdminController
      * @var \Illuminate\Contracts\Auth\Guard
      */
     private $guard;
+    /**
+     * @var \App\Http\Controllers\Admin\DbRoleGateway
+     */
+    private $role;
 
-    public function __construct(DbUserGateway $user, Request $request, Guard $guard)
+    public function __construct(DbUserGateway $user, DbRoleGateway $role, Request $request, Guard $guard)
     {
         $this->user = $user;
         $this->request = $request;
         $this->guard = $guard;
+        $this->role = $role;
     }
 
     public function index()
@@ -81,6 +87,7 @@ class UsersController extends AdminController
     public function userForm($action, $user, $title = null)
     {
         $title = $title ?: 'Editing User - ' . $user->name;
+        $roles = $this->role->all();
 
         switch ($action) {
             case 'create':
@@ -92,7 +99,7 @@ class UsersController extends AdminController
                 $route = route('admin.users.update', $user);
         }
 
-        return $this->render('form', compact('user', 'method', 'route'), $title);
+        return $this->render('form', compact('user', 'method', 'route', 'roles'), $title);
     }
 
     public function update($id)

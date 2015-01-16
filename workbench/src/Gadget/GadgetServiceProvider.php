@@ -28,6 +28,10 @@ class GadgetServiceProvider extends ServiceProvider
 
             return preg_replace($pattern, '<?php echo app(\'gadget\')->make$2; ?>', $view);
         });
+
+        $aliases = $this->app['config']->get('gadgets.aliases', []);
+
+        $this->app['gadget']->registerAliases($aliases);
     }
 
     public function provides()

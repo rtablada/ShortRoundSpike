@@ -146,6 +146,8 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\AclServiceProvider',
 		'App\Providers\MenusServiceProvider',
+		'App\Providers\CopyServiceProvider',
+		'App\Providers\SiteSettingsServiceProvider',
 
         'Rtablada\ShortRound\Gadget\GadgetServiceProvider',
 
@@ -196,6 +198,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
         'Gadget' => 'Rtablada\ShortRound\Gadget\Facades\Gadget',
+        'Setting' => 'App\Facades\SiteSetting',
+        'Copy' => 'App\Facades\Copy',
 
 	],
 

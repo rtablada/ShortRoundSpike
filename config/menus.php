@@ -10,10 +10,6 @@ return [
                 'url'  => 'users',
             ],
             [
-                'name' => 'Menus',
-                'url'  => 'menus',
-            ],
-            [
                 'name' => 'Copy',
                 'url'  => 'copy',
             ],

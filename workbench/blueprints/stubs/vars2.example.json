@@ -1,0 +1,41 @@
+{
+    "modelUpper": "Employee",
+    "increments": "id",
+    "position": true,
+    "timestamps": true,
+    "fields": [
+        {
+            "name": "photo",
+            "type": "file",
+            "label": "Photo"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "label": "Name"
+        },
+        {
+            "name": "title",
+            "type": "string",
+            "label": "Title"
+        },
+        {
+            "name": "past_companies",
+            "type": "string",
+            "label": "Past Companies",
+            "nullable": true
+        },
+        {
+            "name": "principal",
+            "type": "boolean",
+            "label": "Principal",
+            "default": "0"
+        },
+        {
+            "name": "active",
+            "type": "boolean",
+            "label": "Active",
+            "default": 1
+        }
+    ]
+}

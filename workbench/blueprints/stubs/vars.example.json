@@ -1,0 +1,88 @@
+{
+	"files": {
+		"controller": "app/Http/Controllers/Admin/EmployeesController.php",
+		"model": "app/Models/Employee.php",
+		"gateway": "app/Gateways/DBEmployeeGateway.php",
+		"migration": "create_employees_table",
+		"viewsDir": "resources/views/admin/employees"
+	},
+	"migration": {
+		"increments": "id",
+        "position": true,
+        "timestamps": true,
+		"fields": [
+			{
+				"name": "name",
+				"type": "string",
+				"label": "Name"
+			},
+			{
+				"name": "title",
+				"type": "string",
+				"label": "Title"
+			},
+			{
+				"name": "past_companies",
+				"type": "string",
+				"label": "Past Companies",
+				"nullable": true
+			},
+			{
+				"name": "principal",
+				"type": "boolean",
+				"label": "Principal",
+                "default": "0"
+			},
+			{
+				"name": "active",
+				"type": "boolean",
+				"label": "Active",
+				"default": 1
+			}
+		],
+		"attachments": [
+			{
+				"name": "photo",
+				"type": "file",
+				"label": "Photo"
+			}
+		]
+	},
+	"views": {
+		"modelVar": "employee",
+		"modelPlural": "employees",
+		"postition": true,
+		"fields": [
+			{
+				"name": "photo",
+				"type": "file",
+				"label": "Photo"
+			},
+			{
+				"name": "name",
+				"type": "string",
+				"label": "Name"
+			},
+			{
+				"name": "title",
+				"type": "string",
+				"label": "Title"
+			},
+			{
+				"name": "past_companies",
+				"type": "string",
+				"label": "Past Companies"
+			},
+			{
+				"name": "principal",
+				"type": "boolean",
+				"label": "Principal"
+			},
+			{
+				"name": "active",
+				"type": "boolean",
+				"label": "Active"
+			}
+		]
+	}
+}

@@ -1,0 +1,6 @@
+suites:
+  shortround_suite:
+    namespace: Rtablada\ShortRound
+    src_path: src
+    spec_prefix: spec
+    psr4_prefix: Rtablada\ShortRound\

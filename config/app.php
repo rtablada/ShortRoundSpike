@@ -148,6 +148,7 @@ return [
 		'App\Providers\MenusServiceProvider',
 		'App\Providers\CopyServiceProvider',
 		'App\Providers\SiteSettingsServiceProvider',
+		'App\Providers\StaplerServiceProvider',
 
         'Rtablada\ShortRound\Gadget\GadgetServiceProvider',
 

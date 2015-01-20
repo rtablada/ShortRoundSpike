@@ -14,10 +14,10 @@ class Copy
         $this->copy = $copy;
     }
 
-    public function render($slug, $options = [])
+    public function render($slug, $fallback = '')
     {
         $copy = $this->copy->forSlug($slug);
 
-        return $copy->value;
+        return $copy ? $copy->value : $fallback;
     }
 }

@@ -7,11 +7,16 @@
 	"require": {
 		"laravel/framework": "~5.0",
 		"lookitsatravis/listify": "dev-master",
-        "machuga/authority-l4": "dev-master"
+        "machuga/authority-l4": "dev-master",
+		"codesleeve/laravel-stapler": "dev-master",
+		"codesleeve/stapler": "1.0.02",
+		"twig/twig": "~1.0",
+		"filp/whoops": "~1.0"
 	},
 
     "replace": {
         "illuminate/support": "4.2.9",
+        "illuminate/foundation": "4.2.9",
         "illuminate/events": "4.2.9"
     },
 

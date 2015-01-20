@@ -3,7 +3,9 @@
 return [
     'aliases' => [
         'Copy' => 'App\\Gadgets\\Copy',
-        'Menus' => 'App\\Gadgets\\Menus',
+        'Menu' => 'App\\Gadgets\\Menus',
         'Setting' => 'App\\Gadgets\\SiteSetting',
     ],
+
+    'namespace' => 'App\\Gadgets',
 ];

@@ -11,9 +11,16 @@ class GadgetFactory
 
     protected $aliases = [];
 
+    protected $namespace = '';
+
     public function __construct(Application $app)
     {
         $this->app = $app;
+    }
+
+    public function setNamespace($namespace)
+    {
+        $this->namespace = $namespace;
     }
 
     public function make($class)
@@ -28,7 +35,17 @@ class GadgetFactory
 
     protected function getClass($class)
     {
-        return isset($this->aliases[$class]) ? $this->aliases[$class] : $class;
+        if (isset($this->aliases[$class])) {
+            return $this->aliases[$class];
+        }
+
+        $inNamespace = $this->namespace . '\\' . $class;
+
+        if (class_exists($inNamespace)) {
+            return $inNamespace;
+        }
+
+        return $class;
     }
 
     public function registerAliases(array $aliases)

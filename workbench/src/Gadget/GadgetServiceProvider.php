@@ -30,8 +30,10 @@ class GadgetServiceProvider extends ServiceProvider
         });
 
         $aliases = $this->app['config']->get('gadgets.aliases', []);
+        $namespace = $this->app['config']->get('gadgets.namespace');
 
         $this->app['gadget']->registerAliases($aliases);
+        $this->app['gadget']->setNamespace($namespace);
     }
 
     public function provides()

@@ -3,6 +3,5 @@
 return [
     'pages' => [
         '/' => 'home',
-        'nope' => 'home',
     ],
 ];

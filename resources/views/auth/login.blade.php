@@ -12,7 +12,6 @@
                     @include('admin._partials.alerts')
                     <form role="form" method="POST" action="{{ URL::route('auth.session.store') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                         <fieldset>
                             <div class="form-group">
                                 <input class="form-control" placeholder="E-mail" name="email" type="email" value="{{ old('email') }}" autofocus>

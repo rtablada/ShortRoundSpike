@@ -20,7 +20,6 @@
                                     <a href="{{ URL::route('auth.session.create') }}">Login</a>
                                 </div>
                             </div>
-
                             <button class="btn btn-lg btn-success btn-block">Send Password Reset Link</button>
                         </fieldset>
                     </form>

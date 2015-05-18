@@ -15,13 +15,13 @@
                     <table id="data-table" class="table table-striped table-bordered table-hover data-table">
                         <thead>
                             <tr>
+                                {% if position %}<th>Position</th>{% endif %}
+
                                 {% for field in fields %}
 {% if field.type matches '/file/' %}<th>{{ field.label }}</th>
 {% else %}<th data-sort="{{ field.name }}">{{ field.label }}</th>{% endif %}
 
                                 {% endfor %}
-
-                                {% if position %}<th>Position</th>{% endif %}
 
                                 <th></th>
                             </tr>
@@ -29,14 +29,7 @@
                         <tbody>
                             @foreach(${{ modelPlural }} as ${{ modelVar }})
                             <tr>
-                                {% for field in fields %}
-{% if field.type matches '/file/' %}<td><?php if (${{ modelVar }}->{{ field.name }}_file_name) : ?><img src="<?= ${{ modelVar }}->{{ field.name }}->url() ?>" alt=""/><?php endif ?></td>
-{% else %}<td><?= ${{ modelVar }}->{{ field.name }} ?></td>{% endif %}
-
-                                {% endfor %}
-
-                                {% if position %}
-<td>
+                                {% if position %}<td>
                                     <?= ${{ modelVar }}->position ?>
                                     <a href="<?= URL::route('admin.{{ dashedPlural }}.up', ${{ modelVar }}) ?>">
                                         <i class="fa fa-lg fa-sort-up"></i>
@@ -46,6 +39,12 @@
                                     </a>
                                 </td>
                                 {% endif %}
+
+                                {% for field in fields %}
+{% if field.type matches '/file/' %}<td><?php if (${{ modelVar }}->{{ field.name }}_file_name) : ?><img src="<?= ${{ modelVar }}->{{ field.name }}->url() ?>" alt=""/><?php endif ?></td>
+{% else %}<td><?= ${{ modelVar }}->{{ field.name }} ?></td>{% endif %}
+
+                                {% endfor %}
 
                                 <td><a href="<?= URL::route('admin.{{ dashedPlural }}.edit', ${{ modelVar }}) ?>"><i class="fa fa-edit fa-lg"></i></a></td>
                             </tr>

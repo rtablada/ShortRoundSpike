@@ -35,10 +35,10 @@ class ResourceGeneratorCommand extends Command
         $this->generateMigration($input->migrationName, $input);
         $this->generateModel($input->modelPath, $input);
         $this->generateGateway($input->gatewayPath, $input);
-//        $this->generateController($input->controllerPath, $input);
-//        $this->generateViews($input->viewsDir, $input);
+        $this->generateController($input->controllerPath, $input);
+        $this->generateViews($input->viewsDir, $input);
 
-//        $this->generateRoutes($input);
+        $this->generateRoutes($input);
     }
 
     protected function getJsonFileData()

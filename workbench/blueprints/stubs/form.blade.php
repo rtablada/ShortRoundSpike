@@ -47,9 +47,7 @@
 
                                 <label for="{{ field.name }}" class="control-label">{{ field.label }}</label>
 
-                                <textarea type="text" class="form-control" name="{{ field.name }}" id="{{ field.name }}" placeholder="{{ field.label }}">
-                                    <?= old('{{ field.name }}', ${{ modelVar }}->{{ field.name }}) ?>
-                                </textarea>
+                                <textarea type="text" class="form-control" name="{{ field.name }}" id="{{ field.name }}" placeholder="{{ field.label }}"><?= old('{{ field.name }}', ${{ modelVar }}->{{ field.name }}) ?></textarea>
 
                                 <span class="help-block"><?= $errors->first('{{ field.name }}') ?></span>
 

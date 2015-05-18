@@ -57,4 +57,18 @@ class DbSiteSettingGateway
             return true;
         }, array_flip($this->errors));
     }
+
+    public function newInstance($attrs = [])
+    {
+        return $this->setting->newInstance($attrs);
+    }
+
+    public function create($attrs = [])
+    {
+        $setting = $this->newInstance($attrs);
+
+        $setting->save();
+
+        return $setting;
+    }
 }

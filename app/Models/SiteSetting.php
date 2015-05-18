@@ -9,6 +9,11 @@ class SiteSetting extends Model
 {
     use Listify;
 
+    protected $fillable = [
+        'name',
+        'value',
+    ];
+
     /**
      * Create a new Eloquent model instance and attach Listify
      *

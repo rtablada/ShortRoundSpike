@@ -108,4 +108,15 @@ class DbUserGateway
         }
     }
 
+    public function delete($id)
+    {
+        if ($user = $this->find($id)) {
+            $user->delete();
+
+            return $user;
+        }
+
+        return false;
+    }
+
 }

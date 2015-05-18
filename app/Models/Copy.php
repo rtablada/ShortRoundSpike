@@ -14,6 +14,10 @@ class Copy extends Model
         'value',
     ];
 
+    protected $casts = [
+        'buttons' => 'array',
+    ];
+
     /**
      * Sets name attribute and creates
      * a slug param if none exists
@@ -34,6 +38,11 @@ class Copy extends Model
     public function getShortAttribute()
     {
         return Str::words($this->attributes['value'], 10);
+    }
+
+    public function getButtonsJsonAttribute()
+    {
+        return json_encode($this->buttons);
     }
 
 }

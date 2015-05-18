@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Facade;
 
 class SiteSetting extends Facade
 {
-    public static function get($slug)
+    public static function get($slug, $fallback = null)
     {
         $setting = static::$app[static::getGatewayClass()]->forSlug($slug);
 
-        return $setting ? $setting->value : null;
+        return $setting ? $setting->value : $fallback;
     }
 
     protected static function getFacadeAccessor() { return static::getGatewayClass(); }

@@ -1,6 +1,5 @@
 <?php  namespace App\Http\Controllers\Auth;
 
-
 use App\Gateways\DbUserGateway;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;

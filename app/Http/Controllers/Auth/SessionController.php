@@ -54,7 +54,7 @@ class SessionController extends Controller
 
         if ($this->auth->attempt($credentials, $this->request->has('remember'))) {
 
-            return redirect()->intended('/admin/menus')
+            return redirect()->intended(route('admin.dashboard.index'))
                 ->with('success', 'You have logged in.');
         }
 

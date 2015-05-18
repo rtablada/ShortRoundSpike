@@ -117,6 +117,14 @@ class UsersController extends AdminController
         }
     }
 
+    public function destroy($id)
+    {
+        $this->user->delete($id);
+
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User deleted successfully.');
+    }
+
     /**
      * Validate the given request with the given rules.
      *

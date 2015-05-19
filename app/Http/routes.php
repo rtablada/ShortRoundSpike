@@ -1,6 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
+    Route::get('/', ['uses' => 'Admin\\DashboardController@index', 'as' => 'admin.dashboard.index']);
     Route::get('site-settings', ['uses' => 'Admin\\SiteSettingsController@edit', 'as' => 'admin.site-settings.edit']);
     Route::post('site-settings', ['uses' => 'Admin\\SiteSettingsController@store', 'as' => 'admin.site-settings.store']);
 

@@ -36,6 +36,8 @@ class Menus
         $menus = $this->menu->childrenForSlug($slug);
         $user = $this->auth->user();
 
+        \Log::info($user);
+
         return $this->view->make($this->getTemplateName($options), compact('menus', 'user'));
     }
 

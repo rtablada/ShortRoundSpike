@@ -15,10 +15,16 @@ return [
             [
                 'name' => 'Copy',
                 'url'  => 'copy',
+                'roles' => [
+                    'admin'
+                ]
             ],
             [
                 'name' => 'Settings',
                 'url'  => 'site-settings',
+                'roles' => [
+                    'admin'
+                ]
             ],
         ],
     ],
@@ -30,6 +36,9 @@ return [
                 'name'  => 'Settings',
                 'url'   => 'site-settings',
                 'class' => 'fa fa-cog fa-fw',
+                'roles' => [
+                    'admin'
+                ]
             ],
             [
                 'name'     => 'Users',

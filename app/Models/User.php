@@ -35,4 +35,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function inRoles(array $keys)
+    {
+        foreach ($keys as $key) {
+            if ($this->hasRole($key)) {
+                return true;
+            }
+        }
+    }
+
 }

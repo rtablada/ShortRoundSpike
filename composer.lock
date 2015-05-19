@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "84634c318bcff8ba1e947a734f9dcb22",
+    "hash": "ff9eea16436a7db3c2068235faa5e4b3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -881,126 +881,6 @@
                 "rails"
             ],
             "time": "2015-05-09 16:36:13"
-        },
-        {
-            "name": "machuga/authority",
-            "version": "2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/machuga/authority.git",
-                "reference": "e12c9cb5b2d0624f190ff21d27bd00a1de645b34"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/machuga/authority/zipball/e12c9cb5b2d0624f190ff21d27bd00a1de645b34",
-                "reference": "e12c9cb5b2d0624f190ff21d27bd00a1de645b34",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/events": "~4",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.7.*",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Authority": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "mit"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Machuga",
-                    "email": "machuga@gmail.com"
-                },
-                {
-                    "name": "Koen Schmeets",
-                    "email": "hello@koenschmeets.nl"
-                },
-                {
-                    "name": "Jesse O'Brien",
-                    "email": "jesse@jesse-obrien.ca"
-                }
-            ],
-            "description": "A simple and flexible authorization system for PHP",
-            "time": "2015-02-19 04:30:09"
-        },
-        {
-            "name": "machuga/authority-l4",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/machuga/authority-l4.git",
-                "reference": "ba7303a5911db72321503c736327759932fd2e45"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/machuga/authority-l4/zipball/ba7303a5911db72321503c736327759932fd2e45",
-                "reference": "ba7303a5911db72321503c736327759932fd2e45",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~4",
-                "machuga/authority": "2.1.*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.7.*",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Authority\\AuthorityL4": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Matthew Machuga",
-                    "email": "machuga@gmail.com"
-                },
-                {
-                    "name": "Koen Schmeets",
-                    "email": "hello@koenschmeets.nl"
-                },
-                {
-                    "name": "Jesse O'Brien",
-                    "email": "jesse@jesse-obrien.ca"
-                },
-                {
-                    "name": "Conar Welsh",
-                    "email": "conar@welshlabs.com"
-                }
-            ],
-            "description": "A simple and flexible authorization system for PHP",
-            "homepage": "https://github.com/machuga/authority-l4",
-            "keywords": [
-                "Authentication",
-                "Laravel 4",
-                "authorization",
-                "laravel"
-            ],
-            "time": "2015-05-14 01:59:35"
         },
         {
             "name": "monolog/monolog",
@@ -2135,63 +2015,6 @@
             "time": "2015-05-01 14:14:24"
         },
         {
-            "name": "twig/twig",
-            "version": "v1.18.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twigphp/Twig.git",
-                "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9f70492f44398e276d1b81c1b43adfe6751c7b7f",
-                "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.18-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Twig_": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com",
-                    "role": "Project Founder"
-                },
-                {
-                    "name": "Twig Team",
-                    "homepage": "http://twig.sensiolabs.org/contributors",
-                    "role": "Contributors"
-                }
-            ],
-            "description": "Twig, the flexible, fast, and secure template language for PHP",
-            "homepage": "http://twig.sensiolabs.org",
-            "keywords": [
-                "templating"
-            ],
-            "time": "2015-04-19 08:30:27"
-        },
-        {
             "name": "vlucas/phpdotenv",
             "version": "v1.1.0",
             "source": {
@@ -3318,7 +3141,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "lookitsatravis/listify": 20,
-        "machuga/authority-l4": 20,
         "codesleeve/laravel-stapler": 20
     },
     "prefer-stable": false,

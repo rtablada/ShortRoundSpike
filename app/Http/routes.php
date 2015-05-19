@@ -1,10 +1,6 @@
 <?php
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
-    Route::get('api/menus', ['uses' => 'Admin\\Api\\MenusController@index', 'as' => 'admin.api.menus.index']);
-    Route::get('menus', ['uses' => 'Admin\\MenusController@index', 'as' => 'admin.menus.index']);
-    Route::get('menus/{slug}', ['uses' => 'Admin\\MenusController@show', 'as' => 'admin.menus.show']);
-
     Route::get('site-settings', ['uses' => 'Admin\\SiteSettingsController@edit', 'as' => 'admin.site-settings.edit']);
     Route::post('site-settings', ['uses' => 'Admin\\SiteSettingsController@store', 'as' => 'admin.site-settings.store']);
 
@@ -33,5 +29,3 @@ Route::get('password-reset', ['uses' => 'Auth\\PasswordController@create', 'as' 
 Route::post('password-reset', ['uses' => 'Auth\\PasswordController@store', 'as' => 'auth.password.store']);
 Route::get('password-reset/{id}', ['uses' => 'Auth\\PasswordController@edit', 'as' => 'auth.password.edit']);
 Route::post('password-reset/{id}', ['uses' => 'Auth\\PasswordController@update', 'as' => 'auth.password.update']);
-
-Route::get('{page?}', ['uses' => 'PagesController@find', 'as' => 'auth.pages.find'])->where('all', '.*');

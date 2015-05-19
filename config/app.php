@@ -149,7 +149,11 @@ return [
 		'App\Providers\SiteSettingsServiceProvider',
 		'App\Providers\StaplerServiceProvider',
 
+        /*
+         * Third Party Service Providers...
+         */
         'Rtablada\InspectorGadget\GadgetServiceProvider',
+        'BeatSwitch\Lock\Integrations\Laravel\LockServiceProvider',
 
 	],
 

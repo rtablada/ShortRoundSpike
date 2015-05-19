@@ -10,7 +10,8 @@
 		"codesleeve/laravel-stapler": "dev-master",
 		"codesleeve/stapler": "1.0.02",
 		"filp/whoops": "~1.0",
-		"rtablada/inspector-gadget": "^1.0"
+		"rtablada/inspector-gadget": "^1.0",
+		"beatswitch/lock-laravel": "^0.2.1"
 	},
 
 	"require-dev": {

@@ -1,24 +1,26 @@
 <?php
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
-    Route::get('/', ['uses' => 'Admin\\DashboardController@index', 'as' => 'admin.dashboard.index']);
-    Route::get('site-settings', ['uses' => 'Admin\\SiteSettingsController@edit', 'as' => 'admin.site-settings.edit']);
-    Route::post('site-settings', ['uses' => 'Admin\\SiteSettingsController@store', 'as' => 'admin.site-settings.store']);
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin'], function ($router) {
+    Route::get('/', ['uses' => 'DashboardController@index', 'as' => 'admin.dashboard.index']);
+    Route::get('site-settings', ['uses' => 'SiteSettingsController@edit', 'as' => 'admin.site-settings.edit']);
+    Route::post('site-settings', ['uses' => 'SiteSettingsController@store', 'as' => 'admin.site-settings.store']);
 
-    Route::get('users', ['uses' => 'Admin\\UsersController@index', 'as' => 'admin.users.index']);
-    Route::get('users/new', ['uses' => 'Admin\\UsersController@create', 'as' => 'admin.users.create']);
-    Route::post('users', ['uses' => 'Admin\\UsersController@store', 'as' => 'admin.users.store']);
-    Route::get('users/profile', ['uses' => 'Admin\\UsersController@profile', 'as' => 'admin.users.profile']);
-    Route::get('users/{id}', ['uses' => 'Admin\\UsersController@edit', 'as' => 'admin.users.edit']);
-    Route::put('users/{id}', ['uses' => 'Admin\\UsersController@update', 'as' => 'admin.users.update']);
+    Route::group(['prefix' => 'users', 'middleware' => 'user-role', 'role' => 'admin'], function () {
+        Route::get('/', ['uses' => 'UsersController@index', 'as' => 'admin.users.index']);
+        Route::get('/new', ['uses' => 'UsersController@create', 'as' => 'admin.users.create']);
+        Route::post('/', ['uses' => 'UsersController@store', 'as' => 'admin.users.store']);
+        Route::get('/profile', ['uses' => 'UsersController@profile', 'as' => 'admin.users.profile']);
+        Route::get('/{id}', ['uses' => 'UsersController@edit', 'as' => 'admin.users.edit']);
+        Route::put('/{id}', ['uses' => 'UsersController@update', 'as' => 'admin.users.update']);
+    });
 
     Route::group(['prefix' => 'copy'], function () {
-        Route::get('/', ['uses' => 'Admin\\CopyController@index', 'as' => 'admin.copy.index']);
-        Route::get('/new', ['uses' => 'Admin\\CopyController@create', 'as' => 'admin.copy.create']);
-        Route::post('/', ['uses' => 'Admin\\CopyController@store', 'as' => 'admin.copy.store']);
-        Route::get('/profile', ['uses' => 'Admin\\CopyController@profile', 'as' => 'admin.copy.profile']);
-        Route::get('/{id}', ['uses' => 'Admin\\CopyController@edit', 'as' => 'admin.copy.edit']);
-        Route::put('/{id}', ['uses' => 'Admin\\CopyController@update', 'as' => 'admin.copy.update']);
+        Route::get('/', ['uses' => 'CopyController@index', 'as' => 'admin.copy.index']);
+        Route::get('/new', ['uses' => 'CopyController@create', 'as' => 'admin.copy.create']);
+        Route::post('/', ['uses' => 'CopyController@store', 'as' => 'admin.copy.store']);
+        Route::get('/profile', ['uses' => 'CopyController@profile', 'as' => 'admin.copy.profile']);
+        Route::get('/{id}', ['uses' => 'CopyController@edit', 'as' => 'admin.copy.edit']);
+        Route::put('/{id}', ['uses' => 'CopyController@update', 'as' => 'admin.copy.update']);
     });
 });
 

@@ -2,8 +2,11 @@
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin'], function ($router) {
     Route::get('/', ['uses' => 'DashboardController@index', 'as' => 'admin.dashboard.index']);
-    Route::get('site-settings', ['uses' => 'SiteSettingsController@edit', 'as' => 'admin.site-settings.edit']);
-    Route::post('site-settings', ['uses' => 'SiteSettingsController@store', 'as' => 'admin.site-settings.store']);
+
+    Route::group(['prefix' => 'site-settings', 'middleware' => 'user-role', 'role' => 'admin'], function () {
+        Route::get('/', ['uses' => 'SiteSettingsController@edit', 'as' => 'admin.site-settings.edit']);
+        Route::post('/', ['uses' => 'SiteSettingsController@store', 'as' => 'admin.site-settings.store']);
+    });
 
     Route::group(['prefix' => 'users', 'middleware' => 'user-role', 'role' => 'admin'], function () {
         Route::get('/', ['uses' => 'UsersController@index', 'as' => 'admin.users.index']);
@@ -14,7 +17,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         Route::put('/{id}', ['uses' => 'UsersController@update', 'as' => 'admin.users.update']);
     });
 
-    Route::group(['prefix' => 'copy'], function () {
+    Route::group(['prefix' => 'copy', 'middleware' => 'user-role', 'role' => 'admin'], function () {
         Route::get('/', ['uses' => 'CopyController@index', 'as' => 'admin.copy.index']);
         Route::get('/new', ['uses' => 'CopyController@create', 'as' => 'admin.copy.create']);
         Route::post('/', ['uses' => 'CopyController@store', 'as' => 'admin.copy.store']);

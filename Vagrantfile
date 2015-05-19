@@ -19,8 +19,8 @@ hostname        = "vaprobash.dev"
 #   192.168.0.1 - 192.168.255.254
 server_ip             = "192.168.22.10"
 server_cpus           = "1"   # Cores
-server_memory         = "384" # MB
-server_swap           = "768" # Options: false | int (MB) - Guideline: Between one or two times the server_memory
+server_memory         = "1024" # MB
+server_swap           = "1024" # Options: false | int (MB) - Guideline: Between one or two times the server_memory
 
 # UTC        for Universal Coordinated Time
 # EST        for Eastern Standard Time
@@ -328,9 +328,9 @@ Vagrant.configure("2") do |config|
 	vaproconf_url          = "https://raw.githubusercontent.com/#{vaproconf_username}/#{vaproconf_repo}/#{vaproconf_branch}"
 
 	# Postgres Configuration
-	pgsql_database_name = "short"
-	pgsql_user          = "short"
-	pgsql_pass          = "short"
+	pgsql_database_name = "madein"
+	pgsql_user          = "madein"
+	pgsql_pass          = "madein"
 
 	# Configure MySQL
 	# config.vm.provision "shell", path: "#{vaproconf_url}/scripts/mysql.sh", args: [mysql_root_password, mysql_database_name, mysql_user, mysql_pass]

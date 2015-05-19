@@ -11,7 +11,8 @@
 		"codesleeve/laravel-stapler": "dev-master",
 		"codesleeve/stapler": "1.0.02",
 		"twig/twig": "~1.0",
-		"filp/whoops": "~1.0"
+		"filp/whoops": "~1.0",
+		"rtablada/inspector-gadget": "^1.0"
 	},
 
     "replace": {

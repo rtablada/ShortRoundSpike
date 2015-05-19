@@ -144,13 +144,12 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'App\Providers\AclServiceProvider',
 		'App\Providers\MenusServiceProvider',
 		'App\Providers\CopyServiceProvider',
 		'App\Providers\SiteSettingsServiceProvider',
 		'App\Providers\StaplerServiceProvider',
 
-        'Rtablada\ShortRound\Gadget\GadgetServiceProvider',
+        'Rtablada\InspectorGadget\GadgetServiceProvider',
 
 	],
 

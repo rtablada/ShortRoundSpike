@@ -82,7 +82,7 @@ class UsersController extends AdminController
 
     public function editCurrent()
     {
-        return $this->userForm('edit', $this->guard->user());
+        return $this->userForm('edit', $this->guard->user(), 'Edit Profile', route('admin.users.edit-current'));
     }
 
     public function update($id)
@@ -99,6 +99,20 @@ class UsersController extends AdminController
         }
     }
 
+    public function updateCurrent()
+    {
+        $user = $this->guard->user();
+
+        $this->validate($this->request);
+
+        $user = $this->user->update($user->id, $this->request->only('email', 'name'));
+
+        if ($user) {
+            return redirect()->route('admin.dashboard.index')
+                ->with('success', 'Profile updated successfully.');
+        }
+    }
+
     public function destroy($id)
     {
         $this->user->delete($id);
@@ -107,7 +121,7 @@ class UsersController extends AdminController
             ->with('success', 'User deleted successfully.');
     }
 
-    protected function userForm($action, $user, $title = null)
+    protected function userForm($action, $user, $title = null, $route = null)
     {
         $title = $title ?: 'Editing User - ' . $user->name;
         $roles = $this->role->all();
@@ -119,7 +133,7 @@ class UsersController extends AdminController
                 break;
             case 'edit':
                 $method = 'put';
-                $route = route('admin.users.update', $user);
+                $route = $route ?: route('admin.users.update', $user);
         }
 
         return $this->render('form', compact('user', 'method', 'route', 'roles'), $title);

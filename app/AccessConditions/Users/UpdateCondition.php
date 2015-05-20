@@ -22,9 +22,10 @@ class UpdateCondition implements Condition
     {
         $user = $lock->getSubject();
         $id = (int)$resource->getResourceId();
+        $userId = (int)$user->id;
 
         if ($user instanceof User) {
-            return $user->hasRole('admin') || $user->id === $id;
+            return $user->hasRole('admin') || $userId === $id;
         }
     }
 }

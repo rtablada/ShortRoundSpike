@@ -61,6 +61,7 @@ return [
         // each time our application was run.
         if ($manager->getDriver() instanceof ArrayDriver) {
             $caller->allow('update', 'users', null, app('App\AccessConditions\Users\UpdateCondition'));
+            $manager->role('admin')->allow('manage', 'user-roles');
         }
     },
 

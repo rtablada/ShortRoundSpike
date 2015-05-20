@@ -80,12 +80,36 @@ class UsersController extends AdminController
         return $this->userForm('edit', $user);
     }
 
-    public function profile()
+    public function editCurrent()
     {
         return $this->userForm('edit', $this->guard->user());
     }
 
-    public function userForm($action, $user, $title = null)
+    public function update($id)
+    {
+        $this->validate($this->request);
+
+        $user = $this->user->update($id, $this->request->only('email', 'name'));
+
+        if ($user) {
+            $this->user->ensureRoles($user, $this->getRoles($this->request));
+
+            return redirect()->route('admin.users.index')
+                ->with('success', 'User updated successfully.');
+        }
+    }
+
+    public function updateCurrent($id)
+
+    public function destroy($id)
+    {
+        $this->user->delete($id);
+
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User deleted successfully.');
+    }
+
+    protected function userForm($action, $user, $title = null)
     {
         $title = $title ?: 'Editing User - ' . $user->name;
         $roles = $this->role->all();
@@ -103,28 +127,6 @@ class UsersController extends AdminController
         return $this->render('form', compact('user', 'method', 'route', 'roles'), $title);
     }
 
-    public function update($id)
-    {
-        $this->validate($this->request);
-
-        $user = $this->user->update($id, $this->request->only('email', 'name'));
-
-        if ($user) {
-            $this->user->ensureRoles($user, $this->getRoles($this->request));
-
-            return redirect()->route('admin.users.index')
-                ->with('success', 'User updated successfully.');
-        }
-    }
-
-    public function destroy($id)
-    {
-        $this->user->delete($id);
-
-        return redirect()->route('admin.users.index')
-            ->with('success', 'User deleted successfully.');
-    }
-
     /**
      * Validate the given request with the given rules.
      *
@@ -132,7 +134,7 @@ class UsersController extends AdminController
      * @param  array $rules
      * @return void
      */
-    public function validate(Request $request, array $rules = null)
+    protected function validate(Request $request, array $rules = null)
     {
         $rules = $rules ?: $this->rules;
 

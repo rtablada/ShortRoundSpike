@@ -67,7 +67,7 @@ class ArrayMenuItem
     protected function setupFullUrlAttribute($url, $baseUrl)
     {
         $baseUrl = preg_replace('/\/$/', '', $baseUrl);
-        
+
         if ($baseUrl) {
             $this->full_url = $baseUrl . '/' . $url;
         } else {

@@ -42,20 +42,19 @@ return [
             ],
             [
                 'name'     => 'Users',
-                'url'      => 'users',
                 'class'    => 'fa fa-user fa-fw',
                 'children' => [
-                    [
-                        'name'  => 'Logout',
-                        'url'   => '/logout',
-                        'class' => 'fa fa-sign-out fa-fw'
-                    ],
                     [
                         'name'  => 'Profile',
                         'url'   => 'profile',
                         'class' => 'fa fa-user fa-fw'
                     ],
-                ]
+                    [
+                        'name'  => 'Logout',
+                        'url'   => '/logout',
+                        'class' => 'fa fa-sign-out fa-fw'
+                    ],
+                ],
             ],
         ]
     ],

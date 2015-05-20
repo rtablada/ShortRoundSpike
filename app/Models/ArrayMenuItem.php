@@ -68,7 +68,7 @@ class ArrayMenuItem
     {
         $baseUrl = preg_replace('/\/$/', '', $baseUrl);
 
-        if ($baseUrl) {
+        if ($baseUrl && substr($url, 0, 1) !== '/') {
             $this->full_url = $baseUrl . '/' . $url;
         } else {
             $this->full_url =  $url;

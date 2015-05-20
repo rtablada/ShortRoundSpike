@@ -51,7 +51,7 @@ return [
                     ],
                     [
                         'name'  => 'Logout',
-                        'url'   => '/logout',
+                        'url'   => 'logout',
                         'class' => 'fa fa-sign-out fa-fw'
                     ],
                 ],

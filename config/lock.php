@@ -60,15 +60,7 @@ return [
         // If we would do this with the database driver, these permissions would be registered
         // each time our application was run.
         if ($manager->getDriver() instanceof ArrayDriver) {
-            // Set some role permissions.
-            // $manager->role('guest')->allow('read', 'posts');
-            // $manager->role('user')->allow('create', 'posts');
-            // $manager->role('editor')->allow('publish', 'posts');
-
-            // Set some permissions for your current authed or guest user.
-            // You'll probably don't want to do this often because this will
-            // apply on every user using your application.
-            // $manager->caller($caller)->deny('create', 'posts');
+            $caller->allow('update', 'users', null, app('App\AccessConditions\Users\UpdateCondition'));
         }
     },
 

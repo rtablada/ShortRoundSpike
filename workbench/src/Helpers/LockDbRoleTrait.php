@@ -56,4 +56,14 @@ trait LockDbRoleTrait
     {
         return $this->belongsToMany($this->roleClass);
     }
+
+    /**
+     * The caller's roles
+     *
+     * @return array
+     */
+    public function getCallerRoles()
+    {
+        return $this->roles()->lists('name');
+    }
 }

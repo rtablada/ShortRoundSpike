@@ -1,11 +1,16 @@
 <?php  namespace App\Gateways;
 
 use App\Models\User;
+use App\Services\AssertsPermission;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Hash;
 
 class DbUserGateway
 {
+    use AssertsPermission;
+
+    protected $resourceType = 'users';
+
     /**
      * @var \App\Models\User
      */
@@ -43,6 +48,8 @@ class DbUserGateway
 
     public function update($id, array $attributes = [])
     {
+        $this->assertPermission('update', $id);
+
         $user = $this->find($id);
 
         $user->update($attributes);

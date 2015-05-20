@@ -99,8 +99,6 @@ class UsersController extends AdminController
         }
     }
 
-    public function updateCurrent($id)
-
     public function destroy($id)
     {
         $this->user->delete($id);

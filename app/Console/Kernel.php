@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel {
 	protected $commands = [
 		'Rtablada\ShortRound\Console\StarterCommand',
 		'Rtablada\ShortRound\Console\ResourceGeneratorCommand',
+        'App\Console\Commands\CreateAdminUser',
 	];
 
 	/**
